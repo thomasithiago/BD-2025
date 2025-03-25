@@ -1,0 +1,8 @@
+Um banco de dados é uma coleção de informações organizada e estruturada, que pode ser armazenada eletronicamente. Ele permite que os dados sejam adicionados, consultados, alterados e removidos. 
+Principais características
+
+Armazena informações de forma sistemática 
+Pode conter vários tipos de dados, como números, palavras, imagens, vídeos e arquivos 
+É possível criar tabelas e formulários para organizar os dados 
+É usado para gerenciar informações de clientes, registros médicos, entre outros 
+É fundamental para a tomada de decisões e para o suporte a operações críticas 
