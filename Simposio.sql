@@ -232,3 +232,57 @@ INSERT INTO COMISSAO_PESSOA (ID_COMISSAO, ID_PESSOA) VALUES
 (4, 14),
 (5, 15),
 (5, 16);
+
+-- Inserindo métodos de Pesquisa
+
+-- Selecionar todos os dados de todas as tabelas
+SELECT * FROM SIMPOSIO;
+SELECT * FROM PESSOA;
+SELECT * FROM MINICURSO;
+SELECT * FROM TEMA;
+SELECT * FROM ARTIGO;
+SELECT * FROM COMISSAO_CIENTIFICA;
+SELECT * FROM PARECER;
+SELECT * FROM INSCRICAO;
+SELECT * FROM INSCRICAO_MINICURSO;
+SELECT * FROM ARTIGO_AUTOR;
+SELECT * FROM COMISSAO_PESSOA;
+
+-- Selecionar o nome e email de todas as pessoas com idade superior a 20 anos
+SELECT NOME, EMAIL FROM PESSOA WHERE IDADE > 25;
+
+-- Selecionar os títulos dos minicursos que acontecem no Simpósio de Tecnologia
+SELECT m.TITULO
+FROM MINICURSO m
+JOIN SIMPOSIO s ON m.ID_SIMPOSIO = s.ID_SIMPOSIO
+WHERE s.NOME = 'Simpósio de Tecnologia';
+
+-- Selecionar os títulos dos artigos do tema 'BANCO DE DADOS'
+SELECT a.TITULO
+FROM ARTIGO a
+JOIN TEMA t ON a.ID_TEMA = t.ID_TEMA
+WHERE t.NOME_TEMA = 'BANCO DE DADOS';
+
+-- Selecionar o nome das pessoas que fazem parte da comissão científica do tema 'REDES'
+SELECT DISTINCT p.NOME
+FROM PESSOA p
+JOIN COMISSAO_PESSOA cp ON p.ID_PESSOA = cp.ID_PESSOA
+JOIN COMISSAO_CIENTIFICA cc ON cp.ID_COMISSAO = cc.ID_COMISSAO
+JOIN TEMA t ON cc.ID_TEMA = t.ID_TEMA
+WHERE t.NOME_TEMA = 'REDES';
+
+-- Selecionar o título dos artigos e a descrição dos pareceres correspondentes
+SELECT a.TITULO AS TituloArtigo, p.DESCRICAO AS DescricaoParecer
+FROM ARTIGO a
+JOIN PARECER p ON a.ID_ARTIGO = p.ID_ARTIGO;
+
+-- Contar o número total de inscritos no simpósio
+SELECT COUNT(DISTINCT ID_PESSOA) AS TotalInscritos FROM INSCRICAO;
+
+-- Excluindo Dados
+
+-- Deletar uma inscrição específica
+DELETE FROM INSCRICAO WHERE ID_INSCRICAO = 6;
+
+-- Deletar um parecer específico
+DELETE FROM PARECER WHERE ID_PARECER = 2;
